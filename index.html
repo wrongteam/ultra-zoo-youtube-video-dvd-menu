@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultra Zoo Video DVD</title>
+    <style>
+        /* THE VIBE: Dark, CRT-style background */
+        body {
+            background-color: #000;
+            color: #eee;
+            font-family: "Helvetica", "Arial", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* The screen lol 4:3 Aspect Ratio */
+        .dvd-container {
+            width: 800px;
+            height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=800'); /* Placeholder background */
+            background-size: cover;
+            border: 40px solid #111;
+            box-shadow: 0 0 50px #222;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 80px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-shadow: 3px 3px #000;
+            color: #fff;
+        }
+
+        /* THE MENU BUTTONS */
+        .menu-item {
+            font-size: 1.5rem;
+            margin: 15px 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: #ccc;
+        }
+
+        /* select icon (The little DVD triangle) */
+        .menu-item::before {
+            content: '▶';
+            color: #ffcc00; /* Classic DVD Yellow */
+            margin-right: 15px;
+            visibility: hidden;
+            filter: drop-shadow(0 0 5px #ffcc00);
+        }
+
+        .menu-item:hover {
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .menu-item:hover::before {
+            visibility: visible;
+        }
+
+        /* video stuff */
+        .video-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .video-content {
+            width: 80%;
+            max-width: 800px;
+            aspect-ratio: 16/9;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dvd-container">
+        <h1>Ultra Zoo Video Collection</h1>
+        
+        <div class="menu-item" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')">Play All</div>
+        <div class="menu-item" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')">Scene Selection</div>
+        <div class="menu-item" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')">Bonus Features</div>
+        <div class="menu-item" onclick="alert('Produced in 2026')">Setup</div>
+    </div>
+
+    <div id="videoOverlay" class="video-overlay" onclick="closeVideo()">
+        <div class="video-content">
+            <iframe id="videoFrame" width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        function openVideo(url) {
+            document.getElementById('videoFrame').src = url;
+            document.getElementById('videoOverlay').style.display = 'flex';
+        }
+        function closeVideo() {
+            document.getElementById('videoOverlay').style.display = 'none';
+            document.getElementById('videoFrame').src = '';
+        }
+    </script>
+</body>
+</html>
